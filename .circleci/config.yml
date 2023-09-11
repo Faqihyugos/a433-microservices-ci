@@ -14,11 +14,11 @@ jobs:
       - checkout
       - setup_remote_docker
       - run:
-          name: Build lint-docker
-          command: "docker build -t lint-docker -f lint-dockerfile ./karsajobs"
+          name: Installing Hadolint
+          command: "docker pull hadolint/hadolint"
       - run:
           name: Linting BackEnd Dockerfile
-          command: "docker run --rm --interactive lint-docker < ./karsajobs/Dockerfile"
+          command: "docker run --rm --interactive hadolint/hadolint < ./karsajobs/Dockerfile"
   # proses jobs untuk test-app backend
   test-app:
     docker:
@@ -56,11 +56,11 @@ jobs:
       - checkout
       - setup_remote_docker
       - run:
-          name: Build lint-docker
-          command: "docker build -t lint-docker -f lint-dockerfile ./karsajobs-ui"
+          name: "Installing Hadolint"
+          command: "docker pull hadolint/hadolint"
       - run:
           name: "Linting FrontEnd Dockerfile"
-          command: "docker run --rm --interactive lint-docker < ./karsajobs-ui/Dockerfile"
+          command: "docker run --rm --interactive hadolint/hadolint < ./karsajobs-ui/Dockerfile"
 
   # build docker file dan push ke ghcr
   build-app-karsajobs-ui:
