@@ -1,0 +1,53 @@
+ ~ kubectl get all -n monitoring
+NAME                                                         READY   STATUS    RESTARTS   AGE
+pod/alertmanager-prometheus-kube-prometheus-alertmanager-0   2/2     Running   0          21m
+pod/alertmanager-stable-kube-prometheus-sta-alertmanager-0   2/2     Running   0          20m
+pod/grafana-7f95f558d4-wskcm                                 1/1     Running   0          21m
+pod/prometheus-grafana-7d695fcf6f-lb8ks                      3/3     Running   0          21m
+pod/prometheus-kube-prometheus-operator-7bc6fff9d7-bfv8h     1/1     Running   0          21m
+pod/prometheus-kube-state-metrics-648b666689-9fz7m           1/1     Running   0          21m
+pod/prometheus-prometheus-kube-prometheus-prometheus-0       2/2     Running   0          21m
+pod/prometheus-prometheus-node-exporter-pngqw                1/1     Running   0          21m
+pod/prometheus-stable-kube-prometheus-sta-prometheus-0       2/2     Running   0          20m
+pod/stable-grafana-6ff67b7b9f-vpj48                          3/3     Running   0          20m
+pod/stable-kube-prometheus-sta-operator-6858df4965-szrqb     1/1     Running   0          20m
+pod/stable-kube-state-metrics-7ccdc6767c-4npwv               1/1     Running   0          20m
+pod/stable-prometheus-node-exporter-2hgrm                    0/1     Pending   0          20m
+
+NAME                                              TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)                         AGE
+service/alertmanager-operated                     ClusterIP   None            <none>        9093/TCP,9094/TCP,9094/UDP      20m
+service/prometheus-operated                       ClusterIP   None            <none>        9090/TCP                        20m
+service/stable-grafana                            NodePort    10.101.34.17    <none>        80:32560/TCP                    20m
+service/stable-kube-prometheus-sta-alertmanager   ClusterIP   10.99.96.194    <none>        9093/TCP,8080/TCP               20m
+service/stable-kube-prometheus-sta-operator       ClusterIP   10.109.53.249   <none>        443/TCP                         20m
+service/stable-kube-prometheus-sta-prometheus     NodePort    10.97.9.182     <none>        9090:30586/TCP,8080:32400/TCP   20m
+service/stable-kube-state-metrics                 ClusterIP   10.109.193.44   <none>        8080/TCP                        20m
+service/stable-prometheus-node-exporter           ClusterIP   10.100.208.75   <none>        9100/TCP                        20m
+
+NAME                                                 DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR            AGE
+daemonset.apps/prometheus-prometheus-node-exporter   1         1         1       1            1           kubernetes.io/os=linux   15h
+daemonset.apps/stable-prometheus-node-exporter       1         1         0       1            0           kubernetes.io/os=linux   20m
+
+NAME                                                  READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/grafana                               1/1     1            1           15h
+deployment.apps/prometheus-grafana                    1/1     1            1           15h
+deployment.apps/prometheus-kube-prometheus-operator   1/1     1            1           15h
+deployment.apps/prometheus-kube-state-metrics         1/1     1            1           15h
+deployment.apps/stable-grafana                        1/1     1            1           20m
+deployment.apps/stable-kube-prometheus-sta-operator   1/1     1            1           20m
+deployment.apps/stable-kube-state-metrics             1/1     1            1           20m
+
+NAME                                                             DESIRED   CURRENT   READY   AGE
+replicaset.apps/grafana-7f95f558d4                               1         1         1       15h
+replicaset.apps/prometheus-grafana-7d695fcf6f                    1         1         1       15h
+replicaset.apps/prometheus-kube-prometheus-operator-7bc6fff9d7   1         1         1       15h
+replicaset.apps/prometheus-kube-state-metrics-648b666689         1         1         1       15h
+replicaset.apps/stable-grafana-6ff67b7b9f                        1         1         1       20m
+replicaset.apps/stable-kube-prometheus-sta-operator-6858df4965   1         1         1       20m
+replicaset.apps/stable-kube-state-metrics-7ccdc6767c             1         1         1       20m
+
+NAME                                                                    READY   AGE
+statefulset.apps/alertmanager-prometheus-kube-prometheus-alertmanager   1/1     15h
+statefulset.apps/alertmanager-stable-kube-prometheus-sta-alertmanager   1/1     20m
+statefulset.apps/prometheus-prometheus-kube-prometheus-prometheus       1/1     15h
+statefulset.apps/prometheus-stable-kube-prometheus-sta-prometheus       1/1     20m
