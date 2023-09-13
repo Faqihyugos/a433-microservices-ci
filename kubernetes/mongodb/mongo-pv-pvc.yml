@@ -24,7 +24,7 @@ spec:
     - ReadWriteOnce
   # tentukan host path
   hostPath:
-    path: "/mnt/data/mongo"
+    path: "/mnt/data"
 
 ---
 # deklarasi konfigurasi untuk PVC
