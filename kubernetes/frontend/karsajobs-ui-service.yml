@@ -20,7 +20,6 @@ spec:
   - name: default
     port: 8000
     protocol: TCP
-    nodePort: 30017
   # tentukan selector
   selector:
     app: karsajobs
